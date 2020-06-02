@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Excerpt Formatter</title>
+
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Excerpt Formatter</h1>
+
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label class="label" for="input-date-time">Date</label>
+                    <div class="field has-addons">
+                        <p class="control has-icons-left addons-input">
+                            <input class="input" id="input-date-time" placeholder="Date" type="datetime-local">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                        </p>
+                        <p class="control">
+                            <a class="button" id="button-clear-date-time">
+                                <span class="icon">
+                                    <i class="fas fa-times-circle"></i>
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                    <p class="help">Leave blank to remove timestamps from formatted transcript.</p>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <label class="label" for="select-paragraphs">Paragraphs</label>
+                        <div class="select">
+                            <select id="select-paragraphs">
+                                <option selected value="0">Ignore</option>
+                                <option value="1">Preserve</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="textarea-format">Content</label>
+                    <div class="control">
+                        <textarea autocapitalize="off" autocomplete="off" autocorrect="off"
+                                  class="textarea" id="textarea-format" placeholder="Stenographic input" rows="12"
+                                  spellcheck="false"></textarea>
+                    </div>
+                </div>
+                <div class="control">
+                    <button class="button is-primary" id="button-format-text">Format</button>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label" for="input-api-token">API Token</label>
+                    <p class="control has-icons-left">
+                        <input class="input" id="input-api-token" placeholder="xoxp-xxxxxxxxx-xxxx" type="text">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-key"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label" for="input-channel-id">Channel ID</label>
+                    <p class="control has-icons-left">
+                        <input class="input" id="input-channel-id" placeholder="C012AB3CD" type="text">
+                        <span class="icon is-small is-left">
+                            <i class="fab fa-slack-hash"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label" for="input-excerpt-number">Excerpt Number</label>
+                    <p class="control has-icons-left">
+                        <input class="input" id="input-excerpt-number" placeholder="1" type="text">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lightbulb"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label" for="textarea-message">Formatted Content</label>
+                    <div class="control">
+                        <textarea autocapitalize="off" autocomplete="off" autocorrect="off"
+                                  class="textarea" id="textarea-message" placeholder="Formatted transcript" rows="12"
+                                  spellcheck="false"></textarea>
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="control">
+                            <button class="button is-primary" id="button-send-message">Send</button>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <span class="tag is-pulled-right" data-word-count="0" id="tag-word-count">
+                            0 Words
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="dist/app.bundle.js"></script>
+</body>
+</html>
