@@ -9,8 +9,8 @@
     "url": "https://www.cmckillop.com"
   },
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "build": "webpack --config webpack.prod.js",
+    "watch": "webpack --watch --config webpack.dev.js"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
@@ -26,6 +26,7 @@
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2"
   }
 }
