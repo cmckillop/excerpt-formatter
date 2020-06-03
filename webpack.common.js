@@ -1,7 +1,7 @@
 const path = require('path');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
+
 module.exports = {
-    mode: 'development',
     entry: {
         app: './src/js/main.js'
     },
@@ -9,10 +9,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js'
     },
-    optimization: {
-        usedExports: true
-    },
-    devtool: 'inline-source-map',
     resolve: {
         alias: {
             js: path.resolve(__dirname, 'src/js'),
