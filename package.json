@@ -13,13 +13,13 @@
     "watch": "webpack --watch --config webpack.dev.js"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@slack/web-api": "^5.8.1",
     "bulma": "^0.8.2"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "css-loader": "^3.5.3",
     "pnp-webpack-plugin": "^1.6.4",
     "sass": "^1.26.5",
