@@ -3,16 +3,16 @@ const PnpWebpackPlugin = require('pnp-webpack-plugin');
 
 module.exports = {
     entry: {
-        app: './src/js/main.js'
+        app: './app/src/js/main.js'
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'app/dist'),
         filename: '[name].bundle.js'
     },
     resolve: {
         alias: {
-            js: path.resolve(__dirname, 'src/js'),
-            css: path.resolve(__dirname, 'src/css')
+            js: path.resolve(__dirname, 'app/src/js'),
+            css: path.resolve(__dirname, 'app/src/css')
         },
         plugins: [
             PnpWebpackPlugin,

@@ -3,13 +3,13 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from models import FormatterRequest, MessageRequest
-from slack_manager import SlackManager
-from text_formatter import TextFormatter
+from app.models import FormatterRequest, MessageRequest
+from app.slack_manager import SlackManager
+from app.text_formatter import TextFormatter
 
 app = FastAPI()
 
-app.mount('/dist', StaticFiles(directory='dist'), name='dist')
+app.mount('/dist', StaticFiles(directory='app/dist'), name='dist')
 
 slack_manager = SlackManager()
 text_formatter = TextFormatter()
@@ -17,7 +17,7 @@ text_formatter = TextFormatter()
 
 @app.get('/')
 async def read_root():
-    return FileResponse('src/templates/main.html', media_type='text/html')
+    return FileResponse('app/src/templates/main.html', media_type='text/html')
 
 
 @app.post('/format')
