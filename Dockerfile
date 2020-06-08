@@ -4,7 +4,7 @@ COPY ./app/src /app/src
 RUN yarn
 RUN yarn build
 
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
 COPY requirements.txt /
 COPY ./app /app
 COPY --from=0 /app/dist ./app/dist
