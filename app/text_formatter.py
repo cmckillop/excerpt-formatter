@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 
-from app.models import FormattedInput
+from models import FormattedInput
 
 _offset_pattern = re.compile(r'([\d][\d]?:[\d][\d]?:[\d][\d]\t?\n?)')
 _speaker_pattern = re.compile(
