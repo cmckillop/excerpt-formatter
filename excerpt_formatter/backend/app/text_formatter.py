@@ -10,6 +10,8 @@ _speaker_pattern = re.compile(
     r"(?:-[A-Za-zÀ-ÖØ-öø-ÿ'-]+,?)?(?:-[A-Za-zÀ-ÖØ-öø-ÿ'-]+,?)?"
     r"(?:-[A-Za-zÀ-ÖØ-öø-ÿ'-]+,?)?(?:\s\d+)?)]:"
 )
+_audience_speaker_pattern = re.compile(r"(Audience Member)", re.IGNORECASE)
+_speaker_prefix = "AudienceMember"
 
 _part_number_pattern = re.compile(r"([P|p]art [\d][\d]?[\d]?)")
 _time_format = "%H:%M:%S"
@@ -23,7 +25,9 @@ _done_tag_pattern = re.compile(r"\[DONE]")
 
 class TextFormatter:
     def __init__(self):
+        self.programme_id = ""
         self.feed_delay = time(0, 0, 0)
+        self.audience_member_idx = 0
 
     def _parse_offset(self, time_str):
         offset_time = datetime.strptime(time_str.strip(), _time_format).time()
@@ -40,9 +44,18 @@ class TextFormatter:
         time_delta = offset_time_delta - feed_delay_time_delta
         return str(time_delta)
 
-    @staticmethod
-    def _parse_speaker(matched_speaker):
+    def generate_audience_member_id(self):
+        audience_member_id = (
+            f"{_speaker_prefix} {self.programme_id}"
+            f"{str(self.audience_member_idx).zfill(2)}"
+        )
+        self.audience_member_idx += 1
+        return audience_member_id
+
+    def _parse_speaker(self, matched_speaker):
         speaker = matched_speaker.strip()
+        if re.search(_audience_speaker_pattern, matched_speaker):
+            speaker = self.generate_audience_member_id()
         if speaker.isupper() or speaker.islower():
             speaker = speaker.title()
         if " Mp" in speaker:
@@ -85,7 +98,8 @@ class TextFormatter:
                 # Send capture group (offset without the whitespace)
                 # into the offset parsing function
                 offset = self._parse_offset(
-                    re.search(_offset_pattern, line).group(1))
+                    re.search(_offset_pattern, line).group(1)
+                )
                 line = re.sub(_offset_pattern, "", line).strip()
 
             if re.search(_speaker_pattern, line):
@@ -100,7 +114,8 @@ class TextFormatter:
                     formatted_text += f"\n\n{speaker}\n{line.strip()}"
                 else:
                     formatted_text += (
-                        f"\n\n{speaker}\n[{offset}] {line.strip()}")
+                        f"\n\n{speaker}\n[{offset}] {line.strip()}"
+                    )
             else:
                 line = re.sub(_line_number_pattern, "", line)
                 if preserve_paragraphs:
@@ -116,4 +131,5 @@ class TextFormatter:
 
         formatted_text = formatted_text.replace("  ", " ")
         return FormattedInput(
-            excerpt_number, formatted_text.strip(), word_count)
+            excerpt_number, formatted_text.strip(), word_count
+        )
