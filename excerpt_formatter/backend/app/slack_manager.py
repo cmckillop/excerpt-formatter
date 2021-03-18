@@ -13,18 +13,22 @@ class SlackManager:
     @staticmethod
     def _post_request(auth_token: str, url: str, payload: dict):
         return requests.post(
-            url=url, json=payload,
-            headers={"Authorization": f"Bearer {auth_token}"}
+            url=url,
+            json=payload,
+            headers={"Authorization": f"Bearer {auth_token}"},
         )
 
     @staticmethod
     def _get_request(auth_token: str, url: str, payload: dict):
         return requests.get(
-            url=url, params=payload, headers={"Authorization":
-                                              f"Bearer {auth_token}"}
+            url=url,
+            params=payload,
+            headers={"Authorization": f"Bearer {auth_token}"},
         )
 
-    def post_message(self, auth_token: str, channel_id: str, message_text: str):
+    def post_message(
+        self, auth_token: str, channel_id: str, message_text: str
+    ):
         payload = {
             "channel": channel_id,
             "text": message_text,
@@ -37,7 +41,9 @@ class SlackManager:
 
     def delete_message(self, auth_token: str, channel_id: str, timestamp: str):
         payload = {"channel": channel_id, "ts": timestamp}
-        self._post_request(auth_token, "https://slack.com/api/chat.delete", payload)
+        self._post_request(
+            auth_token, "https://slack.com/api/chat.delete", payload
+        )
 
     def get_channel_info(self, auth_token: str, channel_id: str):
         return self._get_request(
