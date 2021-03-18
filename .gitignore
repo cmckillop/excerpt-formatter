@@ -322,7 +322,6 @@ pip-selfcheck.json
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
-.pnp.*
 
 # if you are NOT using Zero-installs, then:
 # comment the following lines
