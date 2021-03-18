@@ -131,5 +131,8 @@ class TextFormatter:
 
         formatted_text = formatted_text.replace("  ", " ")
         return FormattedInput(
-            excerpt_number, formatted_text.strip(), word_count
+            excerpt_number,
+            self.audience_member_idx,
+            formatted_text.strip(),
+            word_count,
         )

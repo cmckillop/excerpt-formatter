@@ -36,8 +36,13 @@ async def read_root():
 
 @app.post("/format")
 async def format_text(formatter_request: FormatterRequest):
+    if formatter_request.audience_idx:
+        text_formatter.audience_member_idx = formatter_request.audience_idx
+    if formatter_request.programme_id:
+        text_formatter.programme_id = formatter_request.programme_id
     if formatter_request.offset_time:
         text_formatter.feed_delay = formatter_request.offset_time
+        
         formatted_input = text_formatter.get_lines(
             text=formatter_request.text,
             preserve_paragraphs=formatter_request.preserve_paragraphs,
@@ -56,6 +61,7 @@ async def format_text(formatter_request: FormatterRequest):
         "excerpt_number": excerpt_number,
         "formatted_text": formatted_input.text,
         "word_count": formatted_input.word_count,
+        "audience_index": formatted_input.audience_idx,
     }
 
 

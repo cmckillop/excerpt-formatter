@@ -22,27 +22,39 @@
         <div class="columns">
             <div class="column">
                 <div class="field">
-                    <label class="label" for="input-offset-time">Feed Offset</label>
-                    <div class="field has-addons">
-                        <p class="control has-icons-left addons-input">
-                            <input title="Offset time delay in stenography feed" class="input" id="input-offset-time"
-                                   type="time" step="1">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user-clock"></i>
-                            </span>
-                        </p>
-                        <p class="control">
-                            <a class="button" id="button-clear-offset-time">
-                                <span class="icon">
-                                    <i class="fas fa-backspace"></i>
-                                </span>
-                            </a>
-                        </p>
-                    </div>
-                    <p class="help">Leave field blank to remove timestamps from formatted transcript.</p>
+                    <label class="label" for="input-programme-id">Programme ID</label>
+                    <p class="control has-icons-left">
+                        <input class="input" id="input-programme-id" placeholder="20201125QT" type="text">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-fingerprint"></i>
+                        </span>
+                    </p>
+                    <p class="help">A unique identifier for the programme.</p>
                 </div>
+
                 <div class="field is-horizontal">
                     <div class="field-body">
+                        <div class="field">
+                            <label class="label" for="input-offset-time">Feed Offset</label>
+                            <div class="field has-addons">
+                                <p class="control has-icons-left addons-input">
+                                    <input title="Offset time delay in stenography feed" class="input" id="input-offset-time"
+                                        type="time" step="1">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user-clock"></i>
+                                    </span>
+                                </p>
+                                <p class="control">
+                                    <a class="button" id="button-clear-offset-time">
+                                        <span class="icon">
+                                            <i class="fas fa-backspace"></i>
+                                        </span>
+                                    </a>
+                                </p>
+                            </div>
+                            <p class="help">Leave field blank to remove timestamps from formatted transcript.</p>
+                        </div>
+
                         <div class="field">
                             <div class="control is-expanded has-icons-left">
                                 <label class="label" for="select-paragraphs">Paragraphs</label>
@@ -57,14 +69,30 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                        
                         <div class="field">
                             <label class="label" for="input-excerpt-counter">Segment Counter</label>
                             <p class="control is-expanded has-icons-left">
                                 <input class="input" id="input-excerpt-counter" placeholder="1" type="number" min="1"
                                        max="10000">
                                 <span class="icon is-small is-left">
-                            <i class="fas fa-sort-numeric-up"></i>
-                        </span>
+                                    <i class="fas fa-sort-numeric-up"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="input-audience-index">Audience Index</label>
+                            <p class="control has-icons-left">
+                                <input class="input" id="input-audience-index" placeholder="1" type="number" min="1"
+                                       max="10000">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-users"></i>
+                                </span>
                             </p>
                         </div>
                     </div>
