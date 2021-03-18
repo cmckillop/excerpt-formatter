@@ -316,19 +316,20 @@ pip-selfcheck.json
 ### yarn ###
 # https://yarnpkg.com/advanced/qa#which-files-should-be-gitignored
 
-.yarn/*
-!.yarn/patches
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+
+**/.yarn/*
+!**/.yarn/patches
+!**/.yarn/releases
+!**/.yarn/plugins
+!**/.yarn/sdks
+!**/.yarn/versions
 
 # if you are NOT using Zero-installs, then:
 # comment the following lines
 # !.yarn/cache
 
 # and uncomment the following lines
-.pnp.*
+**/.pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,dotenv,node,python,venv,virtualenv,yarn
 
