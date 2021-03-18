@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Excerpt Formatter</title>
+
+</head>
+<body>
+<section class="section">
+    <section class="hero is-small">
+        <div class="hero-body">
+            <p class="title">
+                Excerpt Formatter
+            </p>
+            <p class="subtitle">
+                Project Cutie
+            </p>
+        </div>
+    </section>
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label class="label" for="input-offset-time">Feed Offset</label>
+                    <div class="field has-addons">
+                        <p class="control has-icons-left addons-input">
+                            <input title="Offset time delay in stenography feed" class="input" id="input-offset-time"
+                                   type="time" step="1">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user-clock"></i>
+                            </span>
+                        </p>
+                        <p class="control">
+                            <a class="button" id="button-clear-offset-time">
+                                <span class="icon">
+                                    <i class="fas fa-backspace"></i>
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                    <p class="help">Leave field blank to remove timestamps from formatted transcript.</p>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control is-expanded has-icons-left">
+                                <label class="label" for="select-paragraphs">Paragraphs</label>
+                                <div class="select is-fullwidth">
+                                    <select id="select-paragraphs">
+                                        <option selected value="1">Preserve</option>
+                                        <option value="0">Ignore</option>
+                                    </select>
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-indent"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="input-excerpt-counter">Segment Counter</label>
+                            <p class="control is-expanded has-icons-left">
+                                <input class="input" id="input-excerpt-counter" placeholder="1" type="number" min="1"
+                                       max="10000">
+                                <span class="icon is-small is-left">
+                            <i class="fas fa-sort-numeric-up"></i>
+                        </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="textarea-format">Content</label>
+                    <div class="control">
+                        <textarea autocapitalize="off" autocomplete="off" autocorrect="off"
+                                  class="textarea" id="textarea-format" placeholder="Stenographic input" rows="12"
+                                  spellcheck="false"></textarea>
+                    </div>
+                </div>
+                <div class="control">
+                    <button class="button is-primary" id="button-format-text">Format</button>
+                </div>
+            </div>
+            <div class="column">
+                <div class="field">
+                    <label class="label" for="input-auth-token">Access Token</label>
+                    <div class="field has-addons">
+                        <p title="Enter OAuth Access Token" class="control has-icons-left has-icons-right addons-input">
+                            <input class="input" id="input-auth-token" placeholder="xoxp-xxxxxxxxx-xxxx" type="text">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-key"></i>
+                            </span>
+                            <span id="auth-token-status-icon" class="icon is-medium is-right">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                        </p>
+                        <p class="control">
+                            <a class="button" id="button-auth-token">
+                                <span class="icon">
+                                    <i class="fas fa-share"></i>
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                    <p class="help">Slack OAuth Access Token from <a
+                            href="https://api.slack.com">https://api.slack.com</a>.
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label" for="input-channel-id">Channel ID</label>
+                    <div class="field has-addons">
+                        <p title="Enter Channel ID" class="control has-icons-left has-icons-right addons-input">
+                            <input class="input" id="input-channel-id" placeholder="C012AB3CD" type="text">
+                            <span class="icon is-small is-left">
+                            <i class="fab fa-slack-hash"></i>
+                            </span>
+                            <span id="channel-id-status-icon" class="icon is-medium is-right">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                        </p>
+                        <p class="control">
+                            <a class="button" id="button-channel-id">
+                                <span class="icon">
+                                    <i class="fas fa-share"></i>
+                                </span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="input-excerpt-number">Part Number</label>
+                    <p class="control has-icons-left">
+                        <input class="input" id="input-excerpt-number" placeholder="1" type="text">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-list-ol"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label" for="textarea-message">Formatted Content</label>
+                    <div class="control">
+                        <textarea autocapitalize="off" autocomplete="off" autocorrect="off"
+                                  class="textarea" id="textarea-message" placeholder="Formatted transcript" rows="12"
+                                  spellcheck="false"></textarea>
+                    </div>
+                </div>
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <div class="control">
+                            <button title="Send to Slack" class="button is-primary" id="button-send-message">Send
+                            </button>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <span class="tag is-pulled-right" data-word-count="0" id="tag-word-count">
+                            0 Words
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            Developed by <a href="https://arg-tech.org"><strong>ARG-tech</strong></a>. The source code is licensed
+            <a href="https://www.gnu.org/licenses/lgpl-3.0.html">LGPL-3.0</a>.
+        </p>
+    </div>
+</footer>
+<script src="dist/app.bundle.js"></script>
+</body>
+</html>
